@@ -14,8 +14,6 @@ POST_MESSAGE = """Итак, конкурс завершён. Список поб
 Счастливчики:
 {}
 Кому не досталось бана, просьба не расстраиваться. Может, в следующий раз повезёт ;-)
-
-Кому интересно, какими костылями пользовалась администрация, код на гитхабе https://github.com/mymedia2/autobanner
 """
 
 def main():
@@ -40,8 +38,11 @@ def main():
 		if i < len(PERIODS):
 			expires = current_time + PERIODS[i]
 		else:
-			duration = random.randint(30 * 60, 365 * 24 * 60 * 60)
-			if duration > 30 * 60 * 60:
+			if random.randint(1, 5) == 1:
+				duration = random.randint(30 * 60, 365 * 24 * 60 * 60)
+			else:
+				duration = random.randint(30 * 60, 7 * 24 * 60 * 60)
+			if duration > 30 * 24 * 60 * 60:
 				message += CODICIL
 			expires = current_time + duration
 
